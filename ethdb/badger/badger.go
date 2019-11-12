@@ -20,7 +20,7 @@ package badger
 import (
 	"os"
 
-	"github.com/dgraph-io/badger"
+	"github.com/dgraph-io/badger/v2"
 	"github.com/ethereum/go-ethereum/ethdb"
 )
 
@@ -31,6 +31,11 @@ type Database struct {
 func New(directory string) (*Database, error) {
 	os.MkdirAll(directory, 0755)
 	options := badger.DefaultOptions(directory)
+	//options.SyncWrites = false
+	options.NumMemtables *= 2
+	options.NumLevelZeroTables *= 2
+	options.NumLevelZeroTablesStall *= 2
+	options.NumVersionsToKeep = 0
 	db, err := badger.Open(options)
 	if err != nil {
 		return nil, err
