@@ -144,6 +144,7 @@ var (
 		utils.DNSDiscoveryFlag,
 		utils.DeveloperFlag,
 		utils.DeveloperPeriodFlag,
+		utils.DeveloperEthashFlag,
 		utils.ClassicFlag,
 		utils.MordorFlag,
 		utils.SocialFlag,
